@@ -1,5 +1,7 @@
 
+import 'package:bloc_sample/counter/counter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return BlocProvider(
+      create: (context)=>CounterBloc(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      ),
     );
   }
 }
@@ -23,7 +29,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState(); 
 }
 
 class _MyHomePageState extends State<MyHomePage> {
